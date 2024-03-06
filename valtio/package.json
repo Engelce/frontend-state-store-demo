@@ -1,0 +1,25 @@
+{
+  "name": "valtio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ./server.js",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "next": "14.1.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "valtio": "^1.13.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}

@@ -11,9 +11,6 @@ export const RootProvider = ({ data, children }: { data: any; children: React.Re
         set(userState, data);
       }}
     >
-      {/** 
-      // async 
-    <DataProvider /> */}
       {children}
     </RecoilRoot>
   );
