@@ -2,7 +2,7 @@
 import { register, Module } from "@/utils";
 import { RootState } from "@/type/state";
 import dynamic from "next/dynamic";
-// const MainComponent = dynamic(() => import("./component"), { ssr: false });
+// const MainComponent = dynamic(() => import("./ui"), { ssr: false });
 import Component from "./component";
 import axios from "axios";
 import { unstable_batchedUpdates } from "react-dom";
@@ -38,7 +38,7 @@ class MainModule extends Module<RootState, "USER"> {
 const page = register(
   new MainModule("USER", {
     count: 2,
-  })
+  }),
 );
 export const actions = page?.getActions();
 
