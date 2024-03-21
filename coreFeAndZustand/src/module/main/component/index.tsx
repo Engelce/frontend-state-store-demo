@@ -4,7 +4,7 @@ import { actions } from "..";
 
 const Page = () => {
   const state = app.store((state) => state.app.MAIN) ?? {};
-  console.info("MAIN", 1111)
+  console.info(app);
 
   return (
     <div>
