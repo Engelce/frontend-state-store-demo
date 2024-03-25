@@ -1,6 +1,7 @@
 import { type History, type Location } from "history";
 import { create, type StateCreator, type StoreMutatorIdentifier } from "zustand";
 import { immer } from "zustand/middleware/immer";
+import { devtools } from "zustand/middleware";
 import { DEFAULT_IDLE_TIMEOUT } from "./util/IdleDetector";
 
 export type ImmerStateCreator<
@@ -59,14 +60,7 @@ export const createNavigationSlice: ImmerStateCreator<NavigationSlice> = (set) =
 });
 
 export const createLoadingSlice: ImmerStateCreator<LoadingSlice> = (set) => ({
-  loading: {
-    setState: (payload: LoadingActionPayload) => {
-      set((draft) => {
-        const count = draft.loading[payload.identifier];
-        draft.loading[payload.identifier] = count + (payload.show ? 1 : -1);
-      });
-    },
-  },
+  loading: {},
 });
 
 export const createSetStateSlice: ImmerStateCreator<SetStateSlice> = (set) => ({
@@ -82,13 +76,15 @@ export const createIdleSlice: ImmerStateCreator<IdleSlice> = (set) => ({
 
 export const createRootStore = (history: History) => {
   return create<State>()(
-    immer((...a) => ({
-      ...createRouterSlice(history)(...a),
-      ...createLoadingSlice(...a),
-      ...createIdleSlice(...a),
-      ...createSetStateSlice(...a),
-      ...createNavigationSlice(...a),
-    }))
+    immer(
+      devtools((...a) => ({
+        ...createRouterSlice(history)(...a),
+        ...createLoadingSlice(...a),
+        ...createIdleSlice(...a),
+        ...createSetStateSlice(...a),
+        ...createNavigationSlice(...a),
+      }))
+    )
   );
 };
 

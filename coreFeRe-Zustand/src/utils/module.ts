@@ -51,22 +51,13 @@ export const executeAction = async ({
   actionName,
   handler,
   payload,
-  signal,
 }: {
   actionName: string;
   handler: Function;
   payload: any[];
-  signal?: AbortSignal | undefined;
 }) => {
-  const cancelSignal = signal || new AbortController().signal;
-
   try {
-    await Promise.race([
-      handler(...payload),
-      new Promise((_, reject) => {
-        cancelSignal.addEventListener("abort", () => reject(new Error("Cancelled")));
-      }),
-    ]);
+    await handler(...payload);
   } catch (error) {
     const actionPayload =
       stringifyWithMask(app.loggerConfig?.maskedKeywords || [], "***", ...payload) || "[No Parameter]";

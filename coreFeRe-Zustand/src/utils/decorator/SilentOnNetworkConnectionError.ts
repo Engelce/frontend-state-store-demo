@@ -1,5 +1,4 @@
 import { NetworkConnectionException } from "../Exception";
-import { createActionHandlerDecorator } from "./createActionHandlerDecorator";
 import { app } from "../app";
 
 /**
@@ -7,7 +6,7 @@ import { app } from "../app";
  * Mainly used for background tasks.
  */
 export function SilentOnNetworkConnectionError() {
-  return createActionHandlerDecorator(function* (handler) {
+  // return createActionHandlerDecorator(function* (handler) {
     // TODO
     // const { resolve } = createPromiseMiddleware();
     // try {
@@ -27,5 +26,5 @@ export function SilentOnNetworkConnectionError() {
     //     throw e;
     //   }
     // }
-  });
+  // });
 }

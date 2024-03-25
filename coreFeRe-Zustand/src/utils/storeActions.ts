@@ -28,7 +28,7 @@ interface LoadingActionPayload {
 
 export const setLoadingState = (payload: LoadingActionPayload) => {
   app.store.setState((draft) => {
-    const count = draft.loading[payload.identifier];
+    const count = draft.loading[payload.identifier] || 0;
     draft.loading[payload.identifier] = count + (payload.show ? 1 : -1);
   });
 };

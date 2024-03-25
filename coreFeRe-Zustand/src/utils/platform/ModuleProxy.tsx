@@ -4,7 +4,7 @@ import { executeAction } from "../module";
 import { Module, type ModuleLifecycleListener } from "./Module";
 import type { Location } from "history";
 import type { RouteComponentProps } from "react-router";
-import { processTaskAsync } from "../util/taskQueue";
+import { processTaskAsync } from "../util/taskUtils";
 import { setNavigationPrevented } from "../storeActions";
 import { ErrorListener } from "core-fe";
 
@@ -76,12 +76,11 @@ export class ModuleProxy<M extends Module<any, any>> {
 
           const action = `${moduleName}/@@PATHNAME_MATCHED`;
           const startTime = Date.now();
-          this.lastDidUpdateController = processTaskAsync(async (signal) => {
+          this.lastDidUpdateController = processTaskAsync(async () => {
             await executeAction({
               actionName: action,
               handler: lifecycleListener.onPathnameMatched.bind(lifecycleListener),
               payload: [currentRouteParams, currentLocation],
-              signal,
             });
             app.logger.info({
               action,
@@ -117,12 +116,11 @@ export class ModuleProxy<M extends Module<any, any>> {
           const action = `${moduleName}/@@LOCATION_MATCHED`;
           const startTime = Date.now();
 
-          this.lastDidUpdateController = processTaskAsync(async (signal) => {
+          this.lastDidUpdateController = processTaskAsync(async () => {
             await executeAction({
               actionName: action,
               handler: lifecycleListener.onLocationMatched.bind(lifecycleListener),
               payload: [currentRouteParams, currentLocation],
-              signal,
             });
             app.logger.info({
               action,

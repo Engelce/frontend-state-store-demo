@@ -8,8 +8,6 @@ const Page = () => {
     return state.app.MAIN;
   });
 
-  console.info(actions);
-
   return (
     <div>
       <h1>count {mainState.count}</h1>

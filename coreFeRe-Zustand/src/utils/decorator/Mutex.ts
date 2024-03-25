@@ -1,6 +1,5 @@
 import {app} from "../app";
 // import createPromiseMiddleware from "../createPromiseMiddleware";
-import {createActionHandlerDecorator} from "./createActionHandlerDecorator";
 
 /**
  * If specified, the action cannot be entered by other sagas during execution.
@@ -8,7 +7,7 @@ import {createActionHandlerDecorator} from "./createActionHandlerDecorator";
  */
 export function Mutex() {
     let lockTime: number | null = null;
-    return createActionHandlerDecorator(function* (handler, thisModule) {
+    // return createActionHandlerDecorator(function* (handler, thisModule) {
         // TODO
         // if (lockTime) {
         //     thisModule.logger.info({
@@ -25,5 +24,5 @@ export function Mutex() {
         //         lockTime = null;
         //     }
         // }
-    });
+    // });
 }

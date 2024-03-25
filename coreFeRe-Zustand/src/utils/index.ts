@@ -22,7 +22,6 @@ export { Log } from "./decorator/Log";
 export { Mutex } from "./decorator/Mutex";
 export { RetryOnNetworkConnectionError } from "./decorator/RetryOnNetworkConnectionError";
 export { SilentOnNetworkConnectionError } from "./decorator/SilentOnNetworkConnectionError";
-export { createActionHandlerDecorator } from "./decorator/createActionHandlerDecorator";
 
 export { Exception, APIException, NetworkConnectionException } from "./Exception";
 export { showLoading, type State } from "./reducer";

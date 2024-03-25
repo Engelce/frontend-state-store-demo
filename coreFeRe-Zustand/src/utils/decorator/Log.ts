@@ -1,12 +1,12 @@
 import {app} from "../app";
-import {createActionHandlerDecorator} from "./createActionHandlerDecorator";
+// import {createActionHandlerDecorator} from "./createActionHandlerDecorator";
 
 /**
  * To add a log item for action, with execution duration, action name, and masked action parameters.
  */
 export function Log() {
-    return createActionHandlerDecorator(function* (handler, thisModule) {
-        const startTime = Date.now();
+    // return createActionHandlerDecorator(function* (handler, thisModule) {
+        // const startTime = Date.now();
         // TODO
         // const {resolve} = createPromiseMiddleware();
         // try {
@@ -19,5 +19,5 @@ export function Log() {
         //         info: {payload: handler.maskedParams},
         //     });
         // }
-    });
+    // });
 }

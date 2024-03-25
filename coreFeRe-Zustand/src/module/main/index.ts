@@ -9,7 +9,6 @@ export interface State {
 }
 
 class MainModule extends Module<RootState, "MAIN"> {
-  @Loading("inc")
   async inc() {
     console.info(111);
     this.setState({
